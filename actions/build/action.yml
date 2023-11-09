@@ -8,6 +8,8 @@ runs:
         repository: ZPP-QuantumAI/DevOps
         ref: main
     - uses: actions/checkout@v3
+    - run: ls
+      shell: bash
     - run: chmod +x DevOps/build.sh
       shell: bash
     - run: ./DevOps/build.sh ${{ github.event.repository.name }}
