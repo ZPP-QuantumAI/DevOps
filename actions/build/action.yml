@@ -4,14 +4,9 @@ runs:
   using: composite
   steps:
     - uses: actions/checkout@v3
-      with:
-        repository: ZPP-QuantumAI/DevOps
-        ref: main
-        path: DevOps
-    - uses: actions/checkout@v3
-    - run: ls
-      shell: bash
-    - run: chmod +x DevOps/build.sh
-      shell: bash
-    - run: ./DevOps/build.sh ${{ github.event.repository.name }}
+    - run: |
+        wget https://raw.githubusercontent.com/ZPP-QuantumAI/DevOps/build.sh
+        ls
+        chmod +x build.sh
+        ./build.sh ${{ github.event.repository.name }}
       shell: bash
