@@ -5,4 +5,4 @@ jobs:
     runs-on: ubuntu-latest
     name: 'docker build'
     steps:
-      - uses: ZPP-QuantumAi/DevOps/actions/build@main
+      - uses: ZPP-QuantumAI/DevOps/actions/build@main
