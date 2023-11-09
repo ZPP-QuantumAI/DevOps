@@ -7,5 +7,7 @@ runs:
       with:
         repository: ZPP-QuantumAI/DevOps
         ref: main
-    - shell: bash
-      run: ./build.sh $GITHUB_REPOSITORY
+    - run: chmod +x build.sh
+      shell: bash
+    - run: ./build.sh $GITHUB_REPOSITORY
+      shell: bash
