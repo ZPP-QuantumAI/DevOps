@@ -1,7 +1,5 @@
 on:
-  push:
-    branches:
-      - main
+  workflow_call:
 jobs:
   build-docker:
     runs-on: ubuntu-latest
