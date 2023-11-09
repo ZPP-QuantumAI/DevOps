@@ -6,15 +6,6 @@ current_version=$(grep -o '[0-9]*\.[0-9]*\.[0-9]*' "$file_path")
 
 echo "Release version: $current_version"
 
-while true; do
-    read -p "Continue? [Y/n] " yn
-    case $yn in
-        [Yy]* ) break;;
-        [Nn]* ) exit 1;;
-        * ) echo "Please answer y or n";;
-    esac
-done
-
 docker build -t "$app_name:$new_version" "."
 docker image tag "$app_name:$new_version" "ghcr.io/$namespace/$app_name:$new_version"
 docker image tag "$app_name:$new_version" "ghcr.io/$namespace/$app_name:latest"
