@@ -9,5 +9,5 @@ runs:
         ref: main
     - run: chmod +x build.sh
       shell: bash
-    - run: ./build.sh ${{ github.repository }}
+    - run: ./build.sh ${{ github.event.repository.name }}
       shell: bash
