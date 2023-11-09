@@ -1,16 +1,10 @@
-name: Docker-build
-
-on:
-  push:
-    branches:
-      - main
-jobs:
-  docker-build:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - name: Build and test.
-        with:
-          repository: ZPP-QuantumAI/DevOps
-          ref: main
+name: 'Docker build'
+description: 'Builds docker images'
+runs:
+  using: composite
+  steps:
+    - uses: actions/checkout@v3
+      with:
+        repository: ZPP-QuantumAI/DevOps
+        ref: main
         run: ./build.sh $GITHUB_REPOSITORY
