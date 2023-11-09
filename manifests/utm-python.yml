@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: utm-python-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: utm-python
+  template:
+    metadata:
+      labels:
+        app: utm-python
+    spec:
+      containers:
+      - name: utm-python
+        image: ghcr.io/zpp-quantumai/utm-python:latest
+        ports:
+        - containerPort: 8080

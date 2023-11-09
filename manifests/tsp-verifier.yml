@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tsp-verifier-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: tsp-verifier
+  template:
+    metadata:
+      labels:
+        app: tsp-verifier
+    spec:
+      containers:
+      - name: tsp-verifier
+        image: ghcr.io/zpp-quantumai/tsp-verifier:latest
+        ports:
+        - containerPort: 8080
