@@ -3,12 +3,14 @@ description: 'Builds docker images'
 runs:
   using: composite
   steps:
+    - uses: docker/login-action@v1
+      with:
+        reqistry: ghcr.io
+        username: mmaciek87
+        password: ${{ secrets.DOCKER_KEY }}
     - uses: actions/checkout@v3
     - run: |
         wget https://raw.githubusercontent.com/ZPP-QuantumAI/DevOps/main/build.sh
-        echo $DOCKER_KEY | docker login ghcr.io -u USERNAME --password-stdin
-        ls
-        cat build.sh
         chmod +x build.sh
         ./build.sh ${{ github.event.repository.name }}
       shell: bash
