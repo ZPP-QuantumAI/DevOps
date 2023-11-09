@@ -33,4 +33,4 @@ read -r major minor patch <<< "$current_version"
 ((patch++))
 
 new_version="$major.$minor.$patch"
-echo "v$new_version" > version.txt
+echo "v$new_version" > next-version.txt
