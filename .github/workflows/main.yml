@@ -6,3 +6,5 @@ jobs:
     name: 'docker build'
     steps:
       - uses: ZPP-QuantumAI/DevOps/actions/build@main
+        secrets:
+          DOCKER_KEY: ${{ secrets.DOCKER_KEY }}
