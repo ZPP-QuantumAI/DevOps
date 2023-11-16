@@ -2,6 +2,8 @@
 
 To use unified worklow in your repository include:
 
+ _Because we use free github the repositories must have **public** visibilites for the common actions to work._
+
 ```bash
 on:
   push:
