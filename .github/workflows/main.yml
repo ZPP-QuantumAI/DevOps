@@ -8,8 +8,8 @@ jobs:
       - uses: docker/login-action@v2.1.0
         with:
           registry: ghcr.io
-          username: "mmaciek87"
-          password: "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"
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
       - uses: actions/checkout@v3
       - run: |
           wget https://raw.githubusercontent.com/ZPP-QuantumAI/DevOps/main/build.sh
