@@ -2,7 +2,4 @@ on:
   workflow_call:
 jobs:
   build-docker:
-    runs-on: ubuntu-latest
-    name: 'docker build'
-    steps:
-      - uses: ZPP-QuantumAi/DevOps/.github/workflows/main.yml@main
+    uses: ZPP-QuantumAi/DevOps/.github/workflows/main.yml@main
