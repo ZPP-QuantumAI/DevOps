@@ -3,6 +3,10 @@ description: 'Builds docker images'
 runs:
   using: composite
   steps:
+    - uses: actions/checkout@v3
+    - run: |
+        echo $DOCKER_KEY
+      shell: bash
     - uses: docker/login-action@v1
       with:
         registry: ghcr.io
