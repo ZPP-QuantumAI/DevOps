@@ -15,4 +15,9 @@ jobs:
           wget https://raw.githubusercontent.com/ZPP-QuantumAI/DevOps/main/build.sh
           chmod +x build.sh
           ./build.sh ${{ github.event.repository.name }}
+          git config --local user.email "actions@github.com"
+          git config --local user.name "GitHub Actions"
+          git add new-version.txt
+          git commit -m "Change new-version.txt"
+          git push
         shell: bash

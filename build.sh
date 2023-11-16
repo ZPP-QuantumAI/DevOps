@@ -4,6 +4,10 @@ file_path="next-version.txt"
 
 current_version=$(grep -o '[0-9]*\.[0-9]*\.[0-9]*' "$file_path")
 
+if [ -z "$current_version" ]; then
+    current_version="1.0.0"
+fi
+
 echo "Release version: $current_version"
 echo "$app_name:$current_version"
 
