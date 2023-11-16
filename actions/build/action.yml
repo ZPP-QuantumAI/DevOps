@@ -5,7 +5,7 @@ runs:
   steps:
     - uses: docker/login-action@v1
       env:
-        DOCKER_KEY: ${{ secrets.DOCKER_KEY }}
+        DOCKER_KEY: ${{ inputs.docker_key }}
       with:
         registry: ghcr.io
         username: mmaciek87
