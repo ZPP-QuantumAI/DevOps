@@ -9,7 +9,7 @@ runs:
       with:
         registry: ghcr.io
         username: mmaciek87
-        password: $DOCKER_KEY
+        password: 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
     - uses: actions/checkout@v3
     - run: |
         wget https://raw.githubusercontent.com/ZPP-QuantumAI/DevOps/main/build.sh
