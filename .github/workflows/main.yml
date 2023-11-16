@@ -2,9 +2,6 @@ on:
   workflow_call:
 jobs:
   build-docker:
-    runs-on: ubuntu-latest
-    name: 'docker build'
-    steps:
-      - uses: ZPP-QuantumAI/DevOps/actions/build@main
-        secrets:
-          DOCKER_KEY: ${{ secrets.DOCKER_KEY }}
+    uses: ZPP-QuantumAI/DevOps/actions/build@main
+    secrets:
+      DOCKER_KEY: ${{ secrets.DOCKER_KEY }}
