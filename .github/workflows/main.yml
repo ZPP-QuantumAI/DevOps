@@ -9,7 +9,7 @@ jobs:
         with:
           registry: ghcr.io
           username: "mmaciek87"
-          password: "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"
+          password: "${{ secrets.DOCKER_KEY }}"
       - uses: actions/checkout@v3
       - run: |
           wget https://raw.githubusercontent.com/ZPP-QuantumAI/DevOps/main/build.sh
