@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: utm-python-deployment
+  name: utm-python
 spec:
   replicas: 1
   selector:
