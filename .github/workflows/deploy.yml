@@ -22,11 +22,17 @@ jobs:
 
       - name: Configure kubectl
         run: |
-          kubectl config set-cluster zpp-cluster 
+          kubectl config set-cluster zpp-cluster
+          kubectl config set-context zpp-cluster \
+            --cluster=zpp-cluster \
+            --namespace=default \
+            --user=github-deploy
+          kubectl config use-context zpp-cluster
 
       - name: Deploy
         run: |
           deployment_name=${{ github.event.repository.name }}
           replicas=$(kubectl get deployment $deployment_name -o=jsonpath='{.spec.replicas}')
+          echo "current number of replicas: $replicas"
           kubectl scale deployment $deployment_name --replicas=0
           kubectl scale deployment $deployment_name --replicas=$replicas
