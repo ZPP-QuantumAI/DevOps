@@ -22,12 +22,7 @@ jobs:
 
       - name: Configure kubectl
         run: |
-          kubectl config set-cluster zpp-cluster
-          kubectl config set-context zpp-cluster \
-            --cluster=zpp-cluster \
-            --namespace=default \
-            --user=github-deploy
-          kubectl config use-context zpp-cluster
+          gcloud container clusters get-credentials zpp-cluster --region europe-central2 --project zpp-cluster
 
       - name: Deploy
         run: |
