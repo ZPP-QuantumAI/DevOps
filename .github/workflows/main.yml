@@ -3,3 +3,5 @@ on:
 jobs:
   build-docker:
     uses: ZPP-QuantumAi/DevOps/.github/workflows/docker-build.yml@main
+  deploy:
+    uses: ZPP-QuantumAi/DevOps/.github/workflows/deploy.yml@main

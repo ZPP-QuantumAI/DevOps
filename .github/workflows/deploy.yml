@@ -1,0 +1,23 @@
+on:
+  workflow_call:
+jobs:
+  build-docker:
+    runs-on: ubuntu-latest
+    name: 'docker build'
+    steps:
+      - name: Set up Google Cloud
+        uses: google-github-actions/setup-gcloud@v0
+        with:
+          service_account_key: ${{ secrets.GCP_SA_KEY }}
+          export_default_credentials: true
+      
+      - name: Configure kubectl
+        run: |
+          kubectl config set-cluster zpp-cluster 
+
+      - name: Deploy
+        run: |
+          deployment_name=${{ github.event.repository.name }}
+          replicas=$(kubectl get deployment $deployment_name -o=jsonpath='{.spec.replicas}')
+          kubectl scale deployment $deployment_name --replicas=0
+          kubectl scale deployment $deployment_name --replicas=$replicas
