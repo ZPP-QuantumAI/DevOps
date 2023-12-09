@@ -1,9 +1,3 @@
-on:
-  workflow_call:
-    jobs:
-      - deploy:
-          test: ${{ secrets.TEST }}
-
 jobs:
   deploy:
     runs-on: ubuntu-latest
