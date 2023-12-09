@@ -8,9 +8,9 @@ jobs:
       - name: test
         with:
           test: '${{ secrets.TEST }}'
-        run:
+        run: |
           echo $test
-          
+
       - name: Authenticate Google Cloud
         uses: google-github-actions/auth@v1
         with:
