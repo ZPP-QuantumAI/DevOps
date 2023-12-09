@@ -6,8 +6,8 @@ jobs:
     name: 'deploy'
     steps:
       - name: Test
+        env:
+          TEST: ${{ secrets.TEST }}
         run: |
           echo $TEST
-        with:
-          TEST: ${{ secrets.TEST }}
         shell: bash
