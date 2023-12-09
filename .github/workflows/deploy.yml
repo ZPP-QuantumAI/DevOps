@@ -22,6 +22,7 @@ jobs:
 
       - name: Configure kubectl
         run: |
+          gcloud components install gke-gcloud-auth-plugin
           gcloud container clusters get-credentials zpp-cluster --region europe-central2 --project zpp-cluster
 
       - name: Deploy
