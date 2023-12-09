@@ -7,5 +7,7 @@ jobs:
     steps:
       - name: Test
         run: |
-          echo ${{ secrets.TEST }}
+          echo $TEST
+        with:
+          TEST: ${{ secrets.TEST }}
         shell: bash
