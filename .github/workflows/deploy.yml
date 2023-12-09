@@ -1,32 +1,15 @@
 on:
   workflow_call:
+    jobs:
+      - deploy:
+          test: ${{ secrets.TEST }}
+
 jobs:
-  build-docker:
+  deploy:
     runs-on: ubuntu-latest
     name: 'deploy'
     steps:
-      - name: test
-        with:
-          test: '${{ secrets.TEST }}'
+      - name: Test
         run: |
-          echo $test
+          echo ${{ secrets.TEST }}
         shell: bash
-
-      - name: Authenticate Google Cloud
-        uses: google-github-actions/auth@v1
-        with:
-          credentials_json: '${{ secrets.GCP_SA_KEY }}'
-
-      - name: Set up Cloud SDK
-        uses: google-github-actions/setup-gcloud@v1
-      
-      - name: Configure kubectl
-        run: |
-          kubectl config set-cluster zpp-cluster 
-
-      - name: Deploy
-        run: |
-          deployment_name=${{ github.event.repository.name }}
-          replicas=$(kubectl get deployment $deployment_name -o=jsonpath='{.spec.replicas}')
-          kubectl scale deployment $deployment_name --replicas=0
-          kubectl scale deployment $deployment_name --replicas=$replicas
