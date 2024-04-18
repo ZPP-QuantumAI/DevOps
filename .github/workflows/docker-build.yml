@@ -21,24 +21,3 @@ jobs:
           git commit -m "Change next-version.txt"
           git push
         shell: bash
-
-      - name: Authenticate Google Cloud
-        uses: 'google-github-actions/auth@v1'
-        with:
-          credentials_json: ${{ secrets.GCP_SA_KEY }}
-
-      - name: Setup Google Cloud
-        uses: google-github-actions/setup-gcloud@v1
-
-      - name: Configure kubectl
-        run: |
-          gcloud components install gke-gcloud-auth-plugin
-          gcloud container clusters get-credentials zpp-cluster --region europe-central2 --project zpp-cluster
-
-      - name: Deploy
-        run: |
-          deployment_name=${{ github.event.repository.name }}
-          replicas=$(kubectl get deployment $deployment_name -o=jsonpath='{.spec.replicas}')
-          echo "current number of replicas: $replicas"
-          kubectl scale deployment $deployment_name --replicas=0
-          kubectl scale deployment $deployment_name --replicas=$replicas
