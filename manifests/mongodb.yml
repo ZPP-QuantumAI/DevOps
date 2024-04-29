@@ -21,6 +21,11 @@ spec:
         volumeMounts:
         - name: mongodb-data
           mountPath: /data/db
+        env:
+        - name: MONGO_INITDB_ROOT_USERNAME
+          value: root
+        - name: MONGO_INITDB_ROOT_PASSWORD
+          value: init_pass
   volumeClaimTemplates:
   - metadata:
       name: mongodb-data
@@ -43,3 +48,4 @@ spec:
   - protocol: TCP
     port: 27017
     targetPort: 27017
+  type: LoadBalancer
