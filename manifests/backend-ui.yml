@@ -25,6 +25,10 @@ spec:
           value: "27017"
         - name: SPRING_DATA_MONGODB_DATABASE
           value: test
+        - name: SPRING_DATA_MONGODB_USERNAME
+          value: test
+        - name: SPRING_DATA_MONGODB_PASSWORD
+          value: test
         - name: SPRING_KAFKA_BOOTSTRAPSERVERS
           value: localhost:9092,kafka-service:9092
 
