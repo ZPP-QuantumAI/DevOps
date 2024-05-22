@@ -20,9 +20,9 @@ spec:
             - containerPort: 8080
           env:
             - name: MONGO_USERNAME
-              value: test
+              value: root
             - name: MONGO_PASSWORD
-              value: test
+              value: init_pass
 ---
 
 apiVersion: v1
